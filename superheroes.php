@@ -85,7 +85,7 @@ function heroSearch($heroes, $searchTerm) {
 
 if($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['query'])) {
-        $query = $_GET['query'];
+        $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
         unset($searching);
         $searching = heroSearch($superheroes, $query);
 //        $response = ['results' => $searching];

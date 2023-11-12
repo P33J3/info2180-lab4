@@ -1,6 +1,6 @@
 window.onload = () => {
     // const searchButton = document.getElementById("search");
-    const results = document.getElementById("results")
+    const result = document.getElementById("result")
 
 
     // searchButton.addEventListener('click', (event) => {
@@ -16,10 +16,10 @@ window.onload = () => {
         event.preventDefault();
         let hero;
         hero = encodeURIComponent(document.getElementById('searchInput').value.trim());
-        console.log('hero value', hero);
+        // console.log('hero value', hero);
 
         let url = 'http://localhost/info2180-lab4/superheroes.php?query=' + hero;
-        console.log('url', url);
+        // console.log('url', url);
 
         fetch(url)
             .then(response => {
@@ -29,7 +29,7 @@ window.onload = () => {
             })
             .then(data => {
                 // console.log('responseData', data)
-                results.innerHTML = data;
+                result.innerHTML = data;
             })
         })
 }
