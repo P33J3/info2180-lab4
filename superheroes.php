@@ -60,13 +60,62 @@ $superheroes = [
       "name" => "Wanda Maximoff",
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
-  ], 
+  ],
 ];
+
+$searching = [];
+
+function heroSearch($heroes, $searchTerm) {
+    $searching=[];
+    $searchResults = array();
+    foreach($heroes as $hero) {
+        $name = $hero['name'];
+        $alias = $hero['alias'];
+
+        if(($name === $searchTerm) || ($alias === $searchTerm)) {
+            $searchResults[] = $hero;
+        }
+        if($searchTerm === '') {
+            $searchResults[]= $alias;
+        }
+    }
+
+    return $searchResults;
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['query'])) {
+        $query = $_GET['query'];
+        unset($searching);
+        $searching = heroSearch($superheroes, $query);
+//        $response = ['results' => $searching];
+    }
+}
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+
+<?php if(count($searching) === 0): ?>
+    <div id="error">
+        <h4 >SUPERHERO NOT FOUND</h4>
+    </div>
+    <?php elseif(is_array($searching) && (count($searching) > 1)): ?>
+        <ul>
+             <?php foreach($searching as $superhero): ?>
+                <li><h3> <?= $superhero; ?></h3></li>
+             <?php endforeach;?>
+        </ul>
+    <?php else: ?>
+        <?php foreach($searching as $superhero): ?>
+        <h3> <?= strtoupper($superhero['alias']); ?></h3>
+        <h4>A.K.A. <?= strtoupper($superhero['name']);?></h4>
+            <br>
+            <br>
+        <p><?= $superhero['biography']; ?></p>
+        <?php endforeach;?>
+    <?php endif; ?>
+
+
+
+

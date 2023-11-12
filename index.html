@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Avengers Character Search</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js"></script>
-</head>
-<body>
-    <header>
-        <h1>Avengers Character Search</h1>
-    </header>
-   <div>
-       <button id="search">Search</button>
-   </div>
-</body>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Avengers Character Search</title>
+        <link rel="stylesheet" href="../info2180-lab4/styles.css">
+        <script src="./app.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Avengers Character Search</h1>
+        </header>
+       <div class="main">
+
+           <form id='form' action="#" method="post">
+                   <label for="searchInput">Search by Full Name or Alias</label>
+                   <input type="text" name="searchField" id="searchInput" placeholder="e.g. Captain America or Steve Rogers">
+               <button type="submit" id="search">Search</button>
+           </form>
+           <h1 id="results-section">RESULT</h1>
+           <hr>
+           <div id="results"></div>
+       </div>
+
+
+    </body>
 </html>
